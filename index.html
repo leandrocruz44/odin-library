@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="library.css">
+    <link rel="shortcut icon" href="images/a-book.svg" type="image/x-icon">
+    <title>Library</title>
+</head>
+<body>
+    <header>
+        <img src="images/books.svg" alt="pile of books" srcset="">
+        <h1>myLibrary</h1>
+    </header>
+    <main>
+        <div class="book-input">
+            <div>
+                <label for="book">Book</label>
+                <input type="text" name="book" id="book" required>
+            </div>
+            <div>
+                <label for="author">Author</label>
+                <input type="text" name="author" id="author" required>
+            </div>
+            <input type="button" value="Add book" class="button" id="btn" onclick="addBookToLibrary()">
+            <input type="button" value="Remove All" class="button" onclick="deleteAll()">
+        </div>
+        <div id="cards"></div>
+    </main>
+    <footer>
+        <p>Made by <b><a href="https://github.com/leandrocruz44">Leandro Cruz</a></b> for <b><a href="https://www.theodinproject.com/">The Odin Project</a></b></p>
+    </footer>
+</body>
+<script src="library.js"></script>
+</html>
