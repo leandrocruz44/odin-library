@@ -1,11 +1,6 @@
 @font-face {
-    font-family: 'Typewriter';
-    src: url(Mom«t___.ttf);
-}
-
-@font-face {
     font-family: 'Typewriter2';
-    src: url(JMH\ Typewriter-Bold.ttf);
+    src: url(fonts/JMH\ Typewriter-Bold.ttf);
 }
 
 *{
@@ -46,36 +41,16 @@ main{
     box-shadow: inset 0px 2px 4px #888;
 }
 
-.book-input{
+.buttons{
     display: flex;
+    justify-content: center;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-around;
-    padding: 10px;
-    margin-top: 10px;
-}
-
-.book-input > div label{
-    font-family: Arial, Helvetica, sans-serif;
-    margin-right: 5px;
-    font-weight: bold;
-}
-
-.book-input > div input{
-    width: 300px;
-    height: 30px;
-    border-radius: 10px;
-    background-color: white;
-    border: 1px solid #888;
-    padding-left: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.addBook{
-    display: flex;
-    justify-content: space-between;
-}
-
-.book-input .button{
+    margin-top: 20px;
     width: 150px;
     height: 40px;
     border: 0 ;
@@ -85,10 +60,80 @@ main{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.book-input .button:hover{
+.button:hover{
     background-color: #cfcdcf;
     transition: all 0.5s ease;
     cursor: pointer;
+}
+
+.book-input{
+    padding: 10px;
+    margin-top: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    border: 0;
+    box-shadow: 0 0 10px #000;
+}
+
+.book-input .close{
+    display: flex;
+    justify-content: right;
+    border: none;
+}
+
+.book-input .close-button{
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.book-input .form > div label{
+    display: block;
+    width: 70px;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.book-input .form > div input[type=text]{
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid #888;
+    padding-left: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.read{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit{
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.submitButton{ 
+    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: aquamarine;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+.submitButton:hover{
+    background-color: rgb(101, 199, 166);
 }
 
 #cards{
@@ -111,15 +156,31 @@ main{
     position: relative;
 }
 
+/* Delete book button */
+#cards .delete{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    border: 1px solid black;
+    margin-top: 5px;
+    background-color: white;
+    position: absolute;
+    top: 45px;
+    left: 206px;
+}
+
+#cards .delete:hover{
+    background-color: rgb(255, 119, 119);
+    cursor: pointer;
+}
+
 .book{
-    background-color: rgba(0, 0, 0, 0);
     font-family: 'typewriter2', sans-serif;
     font-size: 34px;
     width: 200px;
     height: 100px;
     color: white;
     padding: 5px;
-    border-radius: 20px 20px 20px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,32 +190,23 @@ main{
 }
 
 .author{
-    /* background-color: gray; */
     font-family: 'typewriter2', sans-serif;
     color: white;
     width: 200px;
     padding: 5px;
-    border-radius: 20px 20px 20px 20px;
-    /* box-shadow: 0px 5px 5px black; */
     position: absolute;
     top: 250px;
     left: 25px;
 }
 
-#cards input{
-    width: 30px;
-    height: 30px;
-    border-radius: 50px;
-    border: 1px solid black;
-    margin-top: 5px;
-    background-color: white;
+.readOrNot{
     position: absolute;
     top: 300px;
-    left: 105px;
-}
-
-#cards input:hover{
-    background-color: rgb(255, 119, 119);
+    left: 75px;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px dotted black;
     cursor: pointer;
 }
 

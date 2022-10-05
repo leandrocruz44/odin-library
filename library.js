@@ -1,21 +1,27 @@
 let myLibrary = []
 
-function Book(book, author) {
+function Book(book, author, read) {
     this.book = book
     this.author = author
+    this.read = read
 }
 
 function addBookToLibrary() {
     let newBook = document.getElementById('book').value
     let newAuthor = document.getElementById('author').value
-    let entry = new Book (newBook, newAuthor)
-    myLibrary.push(entry)
+    let readOrNot = document.getElementById('readOrNot').value
+    let entry = new Book (newBook, newAuthor, readOrNot)
+    if (newBook === '' || newAuthor === '') {
+        alert('Please, fill out all required fields.')
+    } else {
+        myLibrary.push(entry)
+    } 
     console.log(myLibrary)
 }
 
 const cards = document.querySelector('#cards')
 
-function showCard() {
+function showBook() {
     const button = document.querySelector('#btn')
     button.addEventListener('click', () => {
         // Clear every card on the screen
@@ -27,9 +33,11 @@ function showCard() {
         for (let i = 0; i < myLibrary.length; i++) {
             let book = document.createElement('div')
             book.innerHTML = `
-            <div class="book"><p>${myLibrary[i].book}</p></div> 
+            <input type="button" class="delete" id="${myLibrary.indexOf(myLibrary[i])}" value="&times;" onclick="deleteCard(this)">
+            <div class="book">${myLibrary[i].book}</div> 
             <div class="author">by ${myLibrary[i].author}</div>
-            <input type="button" id="${myLibrary.indexOf(myLibrary[i])}" value="X" onclick="deleteCard(this)">
+            <input type="button" value="${myLibrary[i].read}" class="readOrNot" id="readOrNot">
+            
             `
             book.setAttribute('id', `card${myLibrary.indexOf(myLibrary[i])}`)
             book.classList.add('card')
@@ -40,6 +48,13 @@ function showCard() {
         let authorField = document.getElementById('author')
         bookField.value = ''
         authorField.value = ''
+    })
+}
+
+function changeStatus() {
+    const button = document.getElementById('readOrNot')
+    button.addEventListener('click', () => {
+        button.value === 'Meu Pau'
     })
 }
 
@@ -58,4 +73,21 @@ function deleteCard(x) {
     myLibrary.splice(buttonIndex, 1)
 }
 
-showCard()
+const bookInput = document.querySelector('.book-input')
+const openBookInput = document.querySelector('#open-button')
+const closeBookInput = document.querySelector('.close-button')
+const submitAndClose = document.querySelector('.submitButton')
+
+openBookInput.addEventListener('click', () => {
+    bookInput.showModal();
+})
+
+closeBookInput.addEventListener('click', () => {
+    bookInput.close();
+})
+
+submitAndClose.addEventListener('click', () => {
+    bookInput.close();
+})
+
+showBook()

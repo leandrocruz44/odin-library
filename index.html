@@ -14,18 +14,35 @@
         <h1>myLibrary</h1>
     </header>
     <main>
-        <div class="book-input">
-            <div>
-                <label for="book">Book</label>
-                <input type="text" name="book" id="book" required>
-            </div>
-            <div>
-                <label for="author">Author</label>
-                <input type="text" name="author" id="author" required>
-            </div>
-            <input type="button" value="Add book" class="button" id="btn" onclick="addBookToLibrary()">
+        <div class="buttons">
+            <input type="button" value="Add book" class="button" id="open-button" class="button">
             <input type="button" value="Remove All" class="button" onclick="deleteAll()">
         </div>
+        <dialog class="book-input">
+            <div class="close"><button class="close-button">&times;</button></div>
+            <form class='form' action="">
+                <div>
+                    <label for="book">Book</label>
+                    <input type="text" name="book" id="book" required>
+                </div>
+                <div>
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author" required>
+                </div>
+                <div class="read">
+                    <span>Did you read this book?</span>
+                    <select name="select" id="readOrNot">
+                        <option value="Read">Yes</option>
+                        <option value="Not Read">No</option>
+                    </select>
+                </div>
+                <div class="submit">
+                    <input type="button" value="Submit" class="submitButton" id="btn" onclick="addBookToLibrary()">
+                </div>
+            </form>
+            
+        </dialog>
+        <div id="overlay"></div>
         <div id="cards"></div>
     </main>
     <footer>
