@@ -66,6 +66,10 @@ main{
     cursor: pointer;
 }
 
+.book-input::backdrop{
+    background-color: rgba(0, 0, 0, 0.473);
+}
+
 .book-input{
     padding: 10px;
     margin-top: 10px;
@@ -112,7 +116,7 @@ main{
 .read{
     margin-top: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .submit{
@@ -136,6 +140,19 @@ main{
     background-color: rgb(101, 199, 166);
 }
 
+#required{
+    margin-top: 15px;
+    color: red;
+}
+
+.requiredHidden{
+    display: none;
+}
+
+.requiredShow{
+    font-weight: bolder;
+}
+
 #cards{
     background-color: #F0EEF1;
     margin-top: 20px;
@@ -147,7 +164,7 @@ main{
 #cards > div{
     margin: 10px 10px;
     height: 370px;
-    width: 320px;
+    width: 310px;
     color: white;
     text-align: center;
     background-image: url(images/book.svg);
@@ -199,15 +216,45 @@ main{
     left: 25px;
 }
 
-.readOrNot{
+.toggleBtn{
     position: absolute;
     top: 300px;
     left: 75px;
     width: 100px;
     height: 30px;
     border-radius: 10px;
-    border: 2px dotted black;
+    border: 2px solid black;
     cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.toggleBtnRead{
+    background-color: lightgreen;
+    position: absolute;
+    top: 300px;
+    left: 75px;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid black;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.toggleBtnNotRead{
+    background-color: lightcoral;
+    position: absolute;
+    top: 300px;
+    left: 75px;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid black;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 footer{

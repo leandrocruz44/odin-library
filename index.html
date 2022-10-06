@@ -20,24 +20,27 @@
         </div>
         <dialog class="book-input">
             <div class="close"><button class="close-button">&times;</button></div>
-            <form class='form' action="">
+            <form class='form' method="dialog">
                 <div>
                     <label for="book">Book</label>
-                    <input type="text" name="book" id="book" required>
+                    <input type="text" name="book" id="book">
                 </div>
                 <div>
                     <label for="author">Author</label>
-                    <input type="text" name="author" id="author" required>
+                    <input type="text" name="author" id="author">
                 </div>
                 <div class="read">
                     <span>Did you read this book?</span>
-                    <select name="select" id="readOrNot">
+                    <select name="select" id="readOrNot" value="Yes">
                         <option value="Read">Yes</option>
                         <option value="Not Read">No</option>
                     </select>
                 </div>
                 <div class="submit">
                     <input type="button" value="Submit" class="submitButton" id="btn" onclick="addBookToLibrary()">
+                </div>
+                <div id="required" class="requiredHidden">
+                    <p>**Please, fill out all required fields.**</p>
                 </div>
             </form>
             

@@ -10,11 +10,13 @@ function addBookToLibrary() {
     let newBook = document.getElementById('book').value
     let newAuthor = document.getElementById('author').value
     let readOrNot = document.getElementById('readOrNot').value
+    let required = document.getElementById('required')
     let entry = new Book (newBook, newAuthor, readOrNot)
-    if (newBook === '' || newAuthor === '') {
-        alert('Please, fill out all required fields.')
-    } else {
+    if (newBook === '' || newAuthor === ''){
+        required.classList.replace('requiredHidden', 'requiredShow')
+    } else{
         myLibrary.push(entry)
+        required.classList.replace('requiredShow', 'requiredHidden')
     } 
     console.log(myLibrary)
 }
@@ -36,13 +38,22 @@ function showBook() {
             <input type="button" class="delete" id="${myLibrary.indexOf(myLibrary[i])}" value="&times;" onclick="deleteCard(this)">
             <div class="book">${myLibrary[i].book}</div> 
             <div class="author">by ${myLibrary[i].author}</div>
-            <input type="button" value="${myLibrary[i].read}" class="readOrNot" id="readOrNot">
+            <input type="button" value="${myLibrary[i].read}" class="toggleBtn" id="toggleBtn${myLibrary.indexOf(myLibrary[i])}" onclick="changeStatus(this)">
             
             `
             book.setAttribute('id', `card${myLibrary.indexOf(myLibrary[i])}`)
             book.classList.add('card')
             cards.append(book)
+
+            // Toggle button color
+            let toggle = document.getElementById(`toggleBtn${myLibrary.indexOf(myLibrary[i])}`)
+            if (toggle.value == 'Read'){
+                toggle.classList.add('toggleBtnRead')
+            } else if(toggle.value == 'Not Read'){
+                toggle.classList.add('toggleBtnNotRead')
+            }
         }
+
         // Clear the input field
         let bookField = document.getElementById('book')
         let authorField = document.getElementById('author')
@@ -51,11 +62,20 @@ function showBook() {
     })
 }
 
-function changeStatus() {
-    const button = document.getElementById('readOrNot')
-    button.addEventListener('click', () => {
-        button.value === 'Meu Pau'
-    })
+function changeStatus(x) {
+    let cardIndex = x.id
+    let cardStatus = x.value
+    let i = cardIndex.charAt(cardIndex.length - 1)
+    let button = document.getElementById(`${cardIndex}`)
+    if (cardStatus == 'Read'){
+        button.value = 'Not Read'
+        myLibrary[i].read = 'Not Read'
+        button.style.backgroundColor = 'lightcoral'
+    } else if (cardStatus == 'Not Read'){
+        button.value = 'Read'
+        myLibrary[i].read = 'Read'
+        button.style.backgroundColor = 'lightgreen'
+    }
 }
 
 function deleteAll() {
@@ -73,20 +93,18 @@ function deleteCard(x) {
     myLibrary.splice(buttonIndex, 1)
 }
 
+// Modal code to pop-up the form
+
 const bookInput = document.querySelector('.book-input')
 const openBookInput = document.querySelector('#open-button')
 const closeBookInput = document.querySelector('.close-button')
-const submitAndClose = document.querySelector('.submitButton')
+
 
 openBookInput.addEventListener('click', () => {
     bookInput.showModal();
 })
 
 closeBookInput.addEventListener('click', () => {
-    bookInput.close();
-})
-
-submitAndClose.addEventListener('click', () => {
     bookInput.close();
 })
 
