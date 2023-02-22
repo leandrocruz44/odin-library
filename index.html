@@ -20,7 +20,7 @@
         </div>
         <dialog class="book-input">
             <div class="close"><button class="close-button">&times;</button></div>
-            <form class='form' method="dialog">
+            <form class='form' method="dialog" novalidate>
                 <div>
                     <label for="book">Book</label>
                     <input type="text" name="book" id="book" required>
@@ -37,10 +37,10 @@
                     </select>
                 </div>
                 <div class="submit">
-                    <input type="button" value="Submit" class="submitButton" id="btn" onclick="addBookToLibrary()">
+                    <input type="submit" value="Submit" class="submitButton" id="btn">
                 </div>
                 <div id="required" class="requiredHidden">
-                    <p>**Please, fill out all required fields.**</p>
+                    <p>Please, fill out all required fields.</p>
                 </div>
             </form>
             

@@ -9,21 +9,24 @@ class Book {
 }
 
 function addBookToLibrary() {
-    let newBook = document.getElementById('book').value
-    let newAuthor = document.getElementById('author').value
-    let newBookToVal = document.getElementById('book')
-    let newAuthorToVal = document.getElementById('author')
-    let readOrNot = document.getElementById('readOrNot').value
-    let required = document.getElementById('required')
-    let entry = new Book (newBook, newAuthor, readOrNot)
-    if (newBookToVal.validity.valueMissing || newAuthorToVal.validity.valueMissing){
-        required.classList.replace('requiredHidden', 'requiredShow')
-    } else {
-        myLibrary.push(entry)
-        required.classList.replace('requiredShow', 'requiredHidden')
-    } 
-    console.log(myLibrary)
+    const submit = document.getElementById('btn')
+    submit.addEventListener('click', (event) => {
+        let newBook = document.getElementById('book')
+        let newAuthor = document.getElementById('author')
+        let readOrNot = document.getElementById('readOrNot')
+        let required = document.getElementById('required')
+        let entry = new Book (newBook.value, newAuthor.value, readOrNot.value)
+        if (newBook.validity.valueMissing || newAuthor.validity.valueMissing){
+            required.classList.replace('requiredHidden', 'requiredShow')
+            event.preventDefault()
+        } else {
+            myLibrary.push(entry)
+            required.classList.replace('requiredShow', 'requiredHidden')
+        } 
+        console.log(myLibrary)
+    })
 }
+
 
 const cards = document.querySelector('#cards')
 
@@ -81,7 +84,6 @@ function deleteCard() {
             const card = document.getElementById(`card${delBtnId}`)
             card.remove()
             myLibrary.splice(delBtnId, 1)
-            console.log(delBtnId)
         }        
     })
 }
@@ -125,7 +127,6 @@ const bookInput = document.querySelector('.book-input')
 const openBookInput = document.querySelector('#open-button')
 const closeBookInput = document.querySelector('.close-button')
 
-
 openBookInput.addEventListener('click', () => {
     bookInput.showModal();
 })
@@ -134,6 +135,7 @@ closeBookInput.addEventListener('click', () => {
     bookInput.close();
 })
 
+addBookToLibrary()
 showBook()
 deleteCard()
 changeStatus()
